@@ -3,3 +3,10 @@ ion-thumbnail {
     border-radius: 10px;
   }
 }
+.search-empty-state{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    position: relative;
+  }

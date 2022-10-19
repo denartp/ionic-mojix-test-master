@@ -39,4 +39,12 @@
     </ion-card>
   </ng-container>
 
+  <!-- EMPTY STATE -->
+  <div class="search-empty-state ion-padding" *ngIf="this.songs.length <= 0 && !showSkeleton">
+    <div>
+      <h2 class="ion-text-center"><b>No Results</b></h2>
+      <h5 class="ion-text-center">Try a new search.</h5>
+    </div>
+  </div>
+
 </ion-content>

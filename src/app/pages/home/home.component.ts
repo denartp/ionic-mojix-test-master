@@ -78,6 +78,5 @@ export class HomeComponent implements OnInit, AfterViewInit {
     if (event.cancelable) event.preventDefault();
     this.offset += this.limit;
     this.loadSongs(event);
-    console.log("this.offset", this.offset);
   }
 }
