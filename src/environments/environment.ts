@@ -5,7 +5,9 @@
 export const environment = {
   production: false,
   api: 'https://itunes.apple.com',
-  apiLimit: 15
+  apiLimit: 15,
+  musicMedia: "music",
+  musicVideoMedia: "musicVideo"
 };
 
 /*

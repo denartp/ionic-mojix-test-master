@@ -4,7 +4,7 @@
     <ion-title slot="start"><b>Mojix Music App</b></ion-title>
     <ion-buttons slot="end">
       <ion-label>Music/Movie</ion-label>
-      <ion-toggle></ion-toggle>
+      <ion-toggle color="dark" (ionChange)="toggleChange($event)" [checked]="isVideo"></ion-toggle>
     </ion-buttons>
   </ion-toolbar>
 
