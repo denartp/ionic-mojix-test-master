@@ -25,6 +25,40 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+:root {
+  --ion-color-custom-gray: #747474;
+  --ion-color-custom-gray-rgb: 116, 116, 116;
+  --ion-color-custom-gray-contrast: #ffffff;
+  --ion-color-custom-gray-contrast-rgb: 255, 255, 255;
+  --ion-color-custom-gray-shade: #666666;
+  --ion-color-custom-gray-tint: #828282;
+
+  --ion-color-custom-gray2: #b1b1b1;
+  --ion-color-custom-gray2-rgb: 177, 177, 177;
+  --ion-color-custom-gray2-contrast: #000000;
+  --ion-color-custom-gray2-contrast-rgb: 0, 0, 0;
+  --ion-color-custom-gray2-shade: #9c9c9c;
+  --ion-color-custom-gray2-tint: #b9b9b9;
+}
+
+.ion-color-custom-gray {
+  --ion-color-base: var(--ion-color-custom-gray);
+  --ion-color-base-rgb: var(--ion-color-custom-gray-rgb);
+  --ion-color-contrast: var(--ion-color-custom-gray-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-custom-gray-contrast-rgb);
+  --ion-color-shade: var(--ion-color-custom-gray-shade);
+  --ion-color-tint: var(--ion-color-custom-gray-tint);
+}
+
+.ion-color-custom-gray2 {
+  --ion-color-base: var(--ion-color-custom-gray2);
+  --ion-color-base-rgb: var(--ion-color-custom-gray2-rgb);
+  --ion-color-contrast: var(--ion-color-custom-gray2-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-custom-gray2-contrast-rgb);
+  --ion-color-shade: var(--ion-color-custom-gray2-shade);
+  --ion-color-tint: var(--ion-color-custom-gray2-tint);
+}
+
 .song-item {
   border-radius: 10px;
   img {

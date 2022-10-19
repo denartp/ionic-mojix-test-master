@@ -4,7 +4,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {IonicModule} from '@ionic/angular';
 import {HomeComponent} from './home.component';
 import {ApiService} from '../../services/api/api.service';
-import {SongModule} from '../../components/song/song.module';
+import { SongComponent } from 'src/app/components/song/song.component';
 
 const routes: Routes = [
   {
@@ -21,7 +21,7 @@ const routes: Routes = [
   ],
   providers: [ApiService],
   exports: [HomeComponent],
-  declarations: [HomeComponent, SongModule]
+  declarations: [HomeComponent, SongComponent]
 })
 export class HomeModule {
 }

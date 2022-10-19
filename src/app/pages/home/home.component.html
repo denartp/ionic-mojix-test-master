@@ -16,7 +16,7 @@
 
 <ion-content>
 
-  <app-song *ngFor="let song of songs; let i = index" [song]="song"></app-song>
+  <app-song *ngFor="let song of songs; let i = index" [song]="song" [index]="i"></app-song>
 
   <ion-infinite-scroll threshold="15%" (ionInfinite)="loadMore($event)">
     <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading...">

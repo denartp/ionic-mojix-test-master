@@ -1,5 +1,5 @@
-<ion-card class="song-item ion-padding-vertical">
-    <ion-item lines="none">
+<ion-card class="song-item ion-padding-vertical" [color]="color">
+    <ion-item lines="none" [color]="color">
         <ion-thumbnail slot="start">
             <img alt="{{song.artistName}}" src="{{song.artworkUrl100}}" />
         </ion-thumbnail>

@@ -1,8 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
 import { SongModel, SongResponse } from 'src/app/model/song.model';
 import { ApiService } from 'src/app/services/api/api.service';
-import { debounceTime } from 'rxjs/operators';
 import { IonInfiniteScroll } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
 
