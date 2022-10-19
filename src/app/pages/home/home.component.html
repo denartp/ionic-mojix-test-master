@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title slot="start"><b>Mojix Music App</b></ion-title>
+    <ion-buttons slot="end">
+      <ion-label>Music/Movie</ion-label>
+      <ion-toggle></ion-toggle>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-searchbar animated enterkeyhint="search" (search)="search($event)" placeholder="Text to search" value="{{textToSearch}}">
+  </ion-searchbar>
+  <app-song *ngFor="let song of songs?.results; let i = index" [song]="song"></app-song>
+</ion-content>

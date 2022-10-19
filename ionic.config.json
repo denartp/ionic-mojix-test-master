@@ -1,0 +1,7 @@
+{
+  "name": "Mojix Coding Challenge base",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

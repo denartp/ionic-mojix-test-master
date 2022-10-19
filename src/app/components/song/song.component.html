@@ -1,0 +1,12 @@
+<ion-card class="song-item">
+    <ion-item lines="none">
+        <ion-thumbnail slot="start">
+            <img alt="{{song?.artistName}}" src="{{song?.artworkUrl100}}" />
+        </ion-thumbnail>
+        <div class="song-item-info">
+            <ion-label>{{song?.artistName}}</ion-label>
+            <ion-label class="ion-text-end"><b>{{song?.trackPrice}}</b> {{song?.currency}}</ion-label>
+            <ion-label>{{song?.trackName}}</ion-label>
+        </div>
+    </ion-item>
+</ion-card>
