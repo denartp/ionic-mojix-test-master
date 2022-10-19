@@ -10,6 +10,7 @@ export class SongComponent implements OnInit {
   @Input() song: SongModel;
   @Input() index: number;
   color: string = "";
+  expanded: boolean = false;
 
   constructor() {
   }
@@ -29,6 +30,14 @@ export class SongComponent implements OnInit {
       }
     };
     return true;
+  }
+
+  expand() {
+    this.expanded = true;
+  }
+
+  unexpand() {
+    this.expanded = false;
   }
 
 }

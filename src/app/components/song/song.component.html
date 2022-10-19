@@ -1,4 +1,4 @@
-<ion-card class="song-item ion-padding-vertical" [color]="color">
+<ion-card *ngIf="!expanded" class="song-item ion-padding-vertical" [color]="color" (click)="expand()">
     <ion-item lines="none" [color]="color">
         <ion-thumbnail slot="start">
             <img alt="{{song.artistName}}" src="{{song.artworkUrl100}}" />
@@ -7,6 +7,21 @@
             <ion-label>{{song.artistName}}</ion-label>
             <ion-label class="ion-text-end"><b>{{song.trackPrice}}</b> {{song.currency}}</ion-label>
             <ion-label>{{song.trackName}}</ion-label>
+        </div>
+    </ion-item>
+</ion-card>
+
+<ion-card *ngIf="expanded" class="expanded-song-item ion-padding-vertical" [color]="color" (click)="unexpand()">
+    <ion-item lines="none" [color]="color">
+        <ion-thumbnail slot="start">
+            <img alt="{{song.artistName}}" src="{{song.artworkUrl100}}" />
+        </ion-thumbnail>
+        <div class="expanded-song-item-info">
+            <ion-label>{{song.artistName}}</ion-label>
+            <ion-label class="ion-padding-top">{{song.trackName}}</ion-label>
+            <ion-label class="ion-padding-top">Released {{song.releaseDate | date : 'mediumDate'}}</ion-label>
+            <ion-label class="ion-padding-top">{{song.trackTimeMillis | date : 'mm:ss'}}</ion-label>
+            <ion-label class="ion-padding-top"><b>{{song.trackPrice}}</b> {{song.currency}}</ion-label>
         </div>
     </ion-item>
 </ion-card>
