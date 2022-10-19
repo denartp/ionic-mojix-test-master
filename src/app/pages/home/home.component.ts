@@ -1,8 +1,10 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { SongResponse } from 'src/app/model/song.model';
+import { SongModel, SongResponse } from 'src/app/model/song.model';
 import { ApiService } from 'src/app/services/api/api.service';
 import { debounceTime } from 'rxjs/operators';
+import { IonInfiniteScroll } from '@ionic/angular';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -11,8 +13,13 @@ import { debounceTime } from 'rxjs/operators';
 })
 export class HomeComponent implements OnInit, AfterViewInit {
 
-  songs: SongResponse;
+  @ViewChild(IonInfiniteScroll, { static: false }) infinityScroll: IonInfiniteScroll;
+
+  songs: SongModel[] = [];
   textToSearch: string = '';
+  showSkeleton: boolean = true;
+  private offset: number = 0;
+  private limit: number = environment.apiLimit;
 
   constructor(private apiService: ApiService) {
   }
@@ -21,23 +28,56 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.loadSongs();
   }
 
+  ionViewWillLeave() {
+    this.showSkeleton = true;
+  }
+
   async search(event) {
+    if (event.cancelable) event.preventDefault();
+    this.songs = [];
+    this.offset = 0;
     this.textToSearch = event.target.value;
-    this.loadSongs(this.textToSearch);
+    if (this.infinityScroll) {
+      this.infinityScroll.disabled = false;
+    }
+    this.showSkeleton = true;
+    this.loadSongs();
   }
 
   ngAfterViewInit(): void {
   }
 
-  loadSongs(artist: string = 'Vicente', media: string = 'musicVideo'/* Or movie */) {
-    this.apiService.searchSongs(artist, media).subscribe(
+  loadSongs(event?, search: string = 'Vicente', media: string = 'music') {
+    if (this.textToSearch) {
+      search = this.textToSearch;
+    }
+    this.apiService.searchSongs(search, media, this.offset, this.limit).subscribe(
       (data: SongResponse) => {
-        this.songs = data;
+        if (data.results.length > 0) {
+          this.songs = this.songs.concat(data.results);
+        } else {
+          this.infinityScroll.disabled = true;
+        }
+        if (event) {
+          event.target.complete();
+        }
+        this.showSkeleton = false;
       },
       error => {
         console.error('searchSongs.error', error);
+        if (event) {
+          event.target.complete();
+        }
+        this.showSkeleton = false;
       }
     )
       ;
+  }
+
+  loadMore(event) {
+    if (event.cancelable) event.preventDefault();
+    this.offset += this.limit;
+    this.loadSongs(event);
+    console.log("this.offset", this.offset);
   }
 }

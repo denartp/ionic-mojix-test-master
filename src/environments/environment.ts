@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  api: 'https://itunes.apple.com'
+  api: 'https://itunes.apple.com',
+  apiLimit: 15
 };
 
 /*

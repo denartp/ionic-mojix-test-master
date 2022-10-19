@@ -13,8 +13,8 @@ export class ApiService {
   constructor(private http: HttpClient) {
   }
 
-  searchSongs(search: string, media: string): Observable<SongResponse> {
-    const path = `${environment.api}/search?term=${search}&media=${media}`;
+  searchSongs(search: string, media: string, offset: number, limit: number): Observable<SongResponse> {
+    const path = `${environment.api}/search?term=${search}&media=${media}&offset=${offset}&limit=${limit}`;
     return this.http.get<SongResponse>(path).pipe(
       retryWhen(error => error.pipe(
         delay(3000),
