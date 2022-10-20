@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {ApiService} from './services/api/api.service';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +6,7 @@ import {ApiService} from './services/api/api.service';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor(private api: ApiService) {
+  constructor() {
   }
 
   ngAfterViewInit(): void {

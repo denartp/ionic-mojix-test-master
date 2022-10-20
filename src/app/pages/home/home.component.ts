@@ -12,8 +12,8 @@ import { StateService } from 'src/app/services/state.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit, AfterViewInit {
-
-  @ViewChild(IonInfiniteScroll, { static: false }) infinityScroll: IonInfiniteScroll;
+  @ViewChild(IonInfiniteScroll, { static: false })
+  infinityScroll: IonInfiniteScroll;
 
   songs: SongModel[] = [];
   textToSearch: string = '';
@@ -22,7 +22,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
   private offset: number = 0;
   private limit: number = environment.apiLimit;
 
-  constructor(private apiService: ApiService, private stateService: StateService) {
+  constructor(
+    private apiService: ApiService,
+    private stateService: StateService
+  ) {
     if (this.stateService.getMediaType() == environment.musicVideoMedia) {
       this.isVideo = true;
     } else {
@@ -54,8 +57,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.loadSongs();
   }
 
-  ngAfterViewInit(): void {
-  }
+  ngAfterViewInit(): void {}
 
   loadSongs(event?, search: string = 'Vicente') {
     if (this.textToSearch) {
@@ -73,15 +75,14 @@ export class HomeComponent implements OnInit, AfterViewInit {
         }
         this.showSkeleton = false;
       },
-      error => {
+      (error) => {
         console.error('searchSongs.error', error);
         if (event) {
           event.target.complete();
         }
         this.showSkeleton = false;
       }
-    )
-      ;
+    );
   }
 
   loadMore(event) {
